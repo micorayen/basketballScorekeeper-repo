@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Section Project: Points Keeper</title>
+    <link rel="stylesheet" href="app.css" />
+
+    <link rel="stylesheet" href="bootrap_v5.3/css/bootstrap.min.css" />
+
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css"
+    />
+  </head>
+  <body class="body bg-primary">
+    <div class="container text-center">
+      <!-- Start Clock Timer =====-->
+
+      <div class="d-flex flex-column border bg-dark bg-gradient my-5 py-5">
+        <div class="col align-self-center">
+          <div class="d-flex flex-row justify-content-center">
+            <div
+              class="btn-group-vertical"
+              role="group"
+              aria-label="Vertical button group"
+            >
+              <h4 class="text-danger">Min</h4>
+              <button type="button" class="btn btn-outline-danger">
+                <i class="bi bi-plus"></i>
+              </button>
+              <button type="button" class="btn btn-outline-danger">
+                <i class="bi bi-dash"></i>
+              </button>
+            </div>
+            <!--  -->
+            <div class="col-auto">
+              <span class="time text-danger bg-dark" id="time">00:00</span>
+            </div>
+            <!--  -->
+            <div
+              class="btn-group-vertical"
+              role="group"
+              aria-label="Vertical button group"
+            >
+              <h4 class="text-danger">Sec</h4>
+
+              <button type="button" class="btn btn-outline-danger">
+                <i class="bi bi-plus"></i>
+              </button>
+              <button type="button" class="btn btn-outline-danger">
+                <i class="bi bi-dash"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Start Clock - Buttons -->
+        <div class="col align-self-center">
+          <div class="d-flex flex-row justify-content-center mb-1">
+            <div class="col">
+              <button
+                type="button"
+                id="stop"
+                class="btn btn-secondary btn-sm btn-clock"
+              >
+                <i class="bi bi-pause-fill"> Pause</i>
+              </button>
+
+              <button
+                type="button"
+                id="start"
+                class="btn btn-success btn-sm btn-clock"
+              >
+                <i class="bi bi-play-fill"> Start</i>
+              </button>
+            </div>
+          </div>
+        </div>
+        <!-- End of  Clock Timer ==========-->
+        <br />
+        <!-- Start of Home & Guest Scoreboard ==========-->
+        <div class="col align-self-center">
+          <div class="d-flex flex-row justify-content-center">
+            <div
+              class="btn-group-vertical"
+              role="group"
+              aria-label="Vertical button group"
+            >
+              <button type="button" class="btn btn-outline-warning">
+                <i class="bi bi-plus"></i>
+              </button>
+              <button type="button" class="btn btn-outline-warning">
+                <i class="bi bi-dash"></i>
+              </button>
+            </div>
+            <!--  -->
+            <div class="col-auto">
+              <h4 class="text-warning">HOME</h4>
+              <span class="time text-warning bg-dark" id="score">100</span>
+            </div>
+            <div class="col-auto text-center align-self-center mx-5">
+              <button type="button" class="btn btn-outline-light btn-lg p-3">
+                <i class="bi bi-volume-up-fill"></i>
+              </button>
+            </div>
+            <div class="col-auto">
+              <h4 class="text-warning">GUEST</h4>
+              <span class="time text-warning bg-dark" id="score">100</span>
+            </div>
+            <!--  -->
+            <div
+              class="btn-group-vertical"
+              role="group"
+              aria-label="Vertical button group"
+            >
+              <button type="button" class="btn btn-outline-warning">
+                <i class="bi bi-plus"></i>
+              </button>
+              <button type="button" class="btn btn-outline-warning">
+                <i class="bi bi-dash"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+        <!-- End of Home & Guest Scoreboard ==========-->
+      </div>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+</html>
+
+<!-- <div class="columns is-multiline is-desktop display">
+  <div class="column is-half is-offset-one-quarter"></div>
+</div> -->
+
+<!-- Feaature: Timer & timer-buttons -->
+<!-- <div class="column is-half is-offset-one-quarter">
+            <div><span class="time" id="time">00:00</span></div>
+
+          </div> -->
+<!-- End of Feaature: Timer & timer-buttons -->
+
+<!-- <div class="columns"> -->
+<!-- Feature: Home & buttons -->
+<!-- <div class="column is-half is-offset-one-quarter">
+            <h1 class="title is-1"><span id="p1Display">00</span> to</h1> -->
+<!-- Player 1 Buttons -->
+<!-- <button
+              id="btnPlayer1-add"
+              class="button is-primary card-footer-item is-medium"
+            >
+              +1 P1
+            </button>
+            <button
+              id="btnPlayer1-deduct"
+              class="button is-primary card-footer-item is-medium"
+            >
+              -1 p1
+            </button>
+          </div> -->
+<!-- End of Feature: Home & buttons -->
+
+<!-- Feature: Guest & buttons -->
+<!-- <div class="column is-half is-offset-one-quarter">
+            <h1 class="title is-1">
+              <span id="p2Display">00</span>
+            </h1> -->
+<!-- Player 2 Buttons -->
+<!-- <button
+              id="btnPlayer2-add"
+              class="button is-info card-footer-item is-medium"
+            >
+              +1 P2
+            </button>
+            <button
+              id="btnPlayer2-deduct"
+              class="button is-info card-footer-item is-medium"
+            >
+              -1 P2
+            </button>
+          </div> -->
+<!-- End of Feature: Guest & buttons -->
+<!-- </div>
+      </div> -->
