@@ -1,54 +1,4 @@
-// Home and Guest Team Score Elements
-const p1 = {
-  score: 0,
-  buttonAdd: document.getElementById("player1AddScoreButton"),
-  buttonDeduct: document.getElementById("player1DeductScoreButton"),
-  display: document.getElementById("player1ScoreDisplay"),
-};
-
-const p2 = {
-  score: 0,
-  buttonAdd: document.getElementById("player2AddScoreButton"),
-  buttonDeduct: document.getElementById("player2DeductScoreButton"),
-  display: document.getElementById("player2ScoreDisplay"),
-};
-
-let winningScore = 10;
-let isGameOver = false;
-
-// Function for Adding & Deducting Scores
-function updateScore(player, opponent) {
-  if (!isGameOver) {
-    player.score += 1;
-    player.display.textContent = player.score;
-  }
-}
-
-function deductScore(player, opponent) {
-  if (!isGameOver) {
-    player.score -= 1;
-    player.display.textContent = player.score;
-  }
-}
-
-// Event listeners for Home & Guest Team Score Buttons
-p1.buttonAdd.addEventListener("click", () => {
-  updateScore(p1, p2);
-});
-
-p2.buttonAdd.addEventListener("click", () => {
-  updateScore(p2, p1);
-});
-
-p1.buttonDeduct.addEventListener("click", () => {
-  deductScore(p1, p2);
-});
-
-p2.buttonDeduct.addEventListener("click", () => {
-  deductScore(p2, p1);
-});
-
-// Feature: Clock ====================
+// Feature: Clock ===========================================
 const btn_minsToAdd = document.getElementById("mins_to_add");
 const btn_minsToDeduct = document.getElementById("mins_to_deduct");
 const btn_secsToAdd = document.getElementById("secs_to_add");
@@ -58,7 +8,7 @@ const btnStart = document.getElementById("start");
 const btnPause = document.getElementById("stop");
 
 // Parameters
-let count = 65;
+let count = 720; //12 minutes, for pro basketball game
 let display = document.querySelector("#time");
 
 let timer = count;
@@ -131,4 +81,105 @@ btn_secsToAdd.addEventListener("click", function () {
 btn_secsToDeduct.addEventListener("click", function () {
   timer -= 1;
   updateDisplay();
+});
+
+// End of Feature: Clock ===============================
+
+// Home and Guest Team Score Elements ==================
+let numberText;
+let firstTwoChars;
+let coloredText;
+const btn_buzzer = document.getElementById("buzzer");
+
+const p1 = {
+  score: 0,
+  buttonAdd: document.getElementById("player1AddScoreButton"),
+  buttonDeduct: document.getElementById("player1DeductScoreButton"),
+  display: document.getElementById("player1ScoreDisplay"),
+};
+
+const p2 = {
+  score: 0,
+  buttonAdd: document.getElementById("player2AddScoreButton"),
+  buttonDeduct: document.getElementById("player2DeductScoreButton"),
+  display: document.getElementById("player2ScoreDisplay"),
+};
+
+let winningScore = 10;
+let isGameOver = false;
+
+// Function for Adding/Deducting and Displaying Scores
+function updateScore(player, opponent) {
+  if (!isGameOver) {
+    player.score += 5;
+
+    if (player.score < 100 && player.score >= 10) {
+      numberText = "1" + player.score;
+      updateScoreDisplay(player, 1);
+    } else if (player.score < 10) {
+      numberText = "10" + player.score;
+      updateScoreDisplay(player, 2);
+    } else {
+      player.display.textContent = player.score;
+    }
+    console.log(`AddScore: ${player.score}`);
+  }
+}
+
+function deductScore(player, opponent) {
+  if (!isGameOver) {
+    player.score -= 5;
+
+    if (player.score < 100 && player.score >= 10) {
+      numberText = "1" + player.score;
+      updateScoreDisplay(player, 1);
+    } else if (player.score < 10) {
+      numberText = "10" + player.score;
+      updateScoreDisplay(player, 2);
+    } else {
+      player.display.textContent = player.score;
+    }
+    console.log(`AddScore: ${player.score}`);
+  }
+}
+
+function updateScoreDisplay(player, charCounts) {
+  // WorkAround: Wrapping the first 2-char in a <span>
+  // to allows for specific styling of the player's score
+  firstTwoChars = numberText.substring(0, charCounts);
+  coloredText = `<span class="gray">${firstTwoChars}</span>${numberText.substring(
+    charCounts
+  )}`;
+
+  player.display.innerHTML = coloredText;
+  numberText = "";
+}
+
+// Event listeners for Home & Guest Team Score Buttons
+p1.buttonAdd.addEventListener("click", () => {
+  updateScore(p1, p2);
+});
+
+p2.buttonAdd.addEventListener("click", () => {
+  updateScore(p2, p1);
+});
+
+p1.buttonDeduct.addEventListener("click", () => {
+  deductScore(p1, p2);
+});
+
+p2.buttonDeduct.addEventListener("click", () => {
+  deductScore(p2, p1);
+});
+// End of Home and Guest Team Score Elements =========
+
+// Load from the Start ===================================
+document.addEventListener("DOMContentLoaded", () => {
+  firstTwoChars = "100".substring(0, 2);
+  coloredText = `<span class="gray">${firstTwoChars}</span>${"100".substring(
+    2
+  )}`;
+
+  p1.display.innerHTML = coloredText;
+  p2.display.innerHTML = coloredText;
 });
