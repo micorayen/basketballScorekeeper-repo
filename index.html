@@ -15,29 +15,39 @@
   </head>
   <body class="body bg-primary">
     <div class="container text-center">
-      <!-- Start Clock Timer =====-->
-
+      <!-- Start of Clock/Timer =====-->
       <div class="d-flex flex-column border bg-dark bg-gradient my-5 py-5">
         <div class="col align-self-center">
           <div class="d-flex flex-row justify-content-center">
+            <!-- Clock: Add/Deduct Minute/s -->
             <div
               class="btn-group-vertical"
               role="group"
               aria-label="Vertical button group"
             >
               <h4 class="text-danger">Min</h4>
-              <button type="button" class="btn btn-outline-danger">
+              <button
+                id="mins_to_add"
+                type="button"
+                class="btn btn-outline-danger"
+              >
                 <i class="bi bi-plus"></i>
               </button>
-              <button type="button" class="btn btn-outline-danger">
+              <button
+                id="mins_to_deduct"
+                type="button"
+                class="btn btn-outline-danger"
+              >
                 <i class="bi bi-dash"></i>
               </button>
             </div>
-            <!--  -->
+
+            <!-- Clock: Display -->
             <div class="col-auto">
               <span class="time text-danger bg-dark" id="time">00:00</span>
             </div>
-            <!--  -->
+
+            <!-- Clock: Add/Deduct Second/s -->
             <div
               class="btn-group-vertical"
               role="group"
@@ -45,17 +55,25 @@
             >
               <h4 class="text-danger">Sec</h4>
 
-              <button type="button" class="btn btn-outline-danger">
+              <button
+                id="secs_to_add"
+                type="button"
+                class="btn btn-outline-danger"
+              >
                 <i class="bi bi-plus"></i>
               </button>
-              <button type="button" class="btn btn-outline-danger">
+              <button
+                id="secs_to_deduct"
+                type="button"
+                class="btn btn-outline-danger"
+              >
                 <i class="bi bi-dash"></i>
               </button>
             </div>
           </div>
         </div>
 
-        <!-- Start Clock - Buttons -->
+        <!-- Clock: Start/Pause Buttons -->
         <div class="col align-self-center">
           <div class="d-flex flex-row justify-content-center mb-1">
             <div class="col">
@@ -78,109 +96,92 @@
           </div>
         </div>
         <!-- End of  Clock Timer ==========-->
+
         <br />
+
         <!-- Start of Home & Guest Scoreboard ==========-->
         <div class="col align-self-center">
           <div class="d-flex flex-row justify-content-center">
+            <!-- Start of Home Display Section -->
             <div
               class="btn-group-vertical"
               role="group"
               aria-label="Vertical button group"
             >
-              <button type="button" class="btn btn-outline-warning">
+              <!-- Add Button for Home Display -->
+              <button
+                id="player1AddScoreButton"
+                type="button"
+                class="btn btn-outline-warning"
+              >
                 <i class="bi bi-plus"></i>
               </button>
-              <button type="button" class="btn btn-outline-warning">
+
+              <!-- Deduct Button for Home Display -->
+              <button
+                id="player1DeductScoreButton"
+                type="button"
+                class="btn btn-outline-warning"
+              >
                 <i class="bi bi-dash"></i>
               </button>
             </div>
-            <!--  -->
+            <!-- Home Display -->
             <div class="col-auto">
               <h4 class="text-warning">HOME</h4>
-              <span class="time text-warning bg-dark" id="score">100</span>
+              <span id="player1ScoreDisplay" class="time text-warning bg-dark"
+                >100</span
+              >
             </div>
+            <!-- End of Home Display Section -->
+
+            <!-- Start of Buzzer Button for Ending a Quarter -->
             <div class="col-auto text-center align-self-center mx-5">
               <button type="button" class="btn btn-outline-light btn-lg p-3">
                 <i class="bi bi-volume-up-fill"></i>
               </button>
             </div>
+            <!-- End of Buzzer Button for Ending a Quarter -->
+
+            <!-- Start of Guest Display Section -->
+            <!-- Guest Display -->
             <div class="col-auto">
               <h4 class="text-warning">GUEST</h4>
-              <span class="time text-warning bg-dark" id="score">100</span>
+              <span id="player2ScoreDisplay" class="time text-warning bg-dark"
+                >100</span
+              >
             </div>
-            <!--  -->
+
             <div
               class="btn-group-vertical"
               role="group"
               aria-label="Vertical button group"
             >
-              <button type="button" class="btn btn-outline-warning">
+              <!-- Add Button for Guest Display -->
+              <button
+                id="player2AddScoreButton"
+                type="button"
+                class="btn btn-outline-warning"
+              >
                 <i class="bi bi-plus"></i>
               </button>
-              <button type="button" class="btn btn-outline-warning">
+              <!-- Add Button for Guest Display -->
+              <button
+                id="player2DeductScoreButton"
+                type="button"
+                class="btn btn-outline-warning"
+              >
                 <i class="bi bi-dash"></i>
               </button>
             </div>
+            <!-- End of Guest Display Section -->
           </div>
         </div>
         <!-- End of Home & Guest Scoreboard ==========-->
       </div>
     </div>
 
+    <!-- JavaScript Script -->
     <script src="app.js"></script>
   </body>
 </html>
-
-<!-- <div class="columns is-multiline is-desktop display">
-  <div class="column is-half is-offset-one-quarter"></div>
-</div> -->
-
-<!-- Feaature: Timer & timer-buttons -->
-<!-- <div class="column is-half is-offset-one-quarter">
-            <div><span class="time" id="time">00:00</span></div>
-
-          </div> -->
-<!-- End of Feaature: Timer & timer-buttons -->
-
-<!-- <div class="columns"> -->
-<!-- Feature: Home & buttons -->
-<!-- <div class="column is-half is-offset-one-quarter">
-            <h1 class="title is-1"><span id="p1Display">00</span> to</h1> -->
-<!-- Player 1 Buttons -->
-<!-- <button
-              id="btnPlayer1-add"
-              class="button is-primary card-footer-item is-medium"
-            >
-              +1 P1
-            </button>
-            <button
-              id="btnPlayer1-deduct"
-              class="button is-primary card-footer-item is-medium"
-            >
-              -1 p1
-            </button>
-          </div> -->
-<!-- End of Feature: Home & buttons -->
-
-<!-- Feature: Guest & buttons -->
-<!-- <div class="column is-half is-offset-one-quarter">
-            <h1 class="title is-1">
-              <span id="p2Display">00</span>
-            </h1> -->
-<!-- Player 2 Buttons -->
-<!-- <button
-              id="btnPlayer2-add"
-              class="button is-info card-footer-item is-medium"
-            >
-              +1 P2
-            </button>
-            <button
-              id="btnPlayer2-deduct"
-              class="button is-info card-footer-item is-medium"
-            >
-              -1 P2
-            </button>
-          </div> -->
-<!-- End of Feature: Guest & buttons -->
-<!-- </div>
-      </div> -->
