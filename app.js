@@ -24,7 +24,12 @@ function startTimer(duration, display) {
     if (--timer < 0) {
       // timer = duration; // Repeating Countdown
       clearInterval(intervalId);
+      soundBuzzer();
       btnPause.disabled = true;
+      p1.buttonAdd.disabled = true;
+      p1.buttonDeduct.disabled = true;
+      p2.buttonAdd.disabled = true;
+      p2.buttonDeduct.disabled = true;
     }
   }, 1000);
 
@@ -89,6 +94,7 @@ btn_secsToDeduct.addEventListener("click", function () {
 let numberText;
 let firstTwoChars;
 let coloredText;
+
 const btn_buzzer = document.getElementById("buzzer");
 
 const p1 = {
@@ -111,7 +117,7 @@ let isGameOver = false;
 // Function for Adding/Deducting and Displaying Scores
 function updateScore(player, opponent) {
   if (!isGameOver) {
-    player.score += 5;
+    player.score += 1;
 
     if (player.score < 100 && player.score >= 10) {
       numberText = "1" + player.score;
@@ -128,23 +134,25 @@ function updateScore(player, opponent) {
 
 function deductScore(player, opponent) {
   if (!isGameOver) {
-    player.score -= 5;
+    if (player.score > 0) {
+      player.score -= 1;
 
-    if (player.score < 100 && player.score >= 10) {
-      numberText = "1" + player.score;
-      updateScoreDisplay(player, 1);
-    } else if (player.score < 10) {
-      numberText = "10" + player.score;
-      updateScoreDisplay(player, 2);
-    } else {
-      player.display.textContent = player.score;
+      if (player.score < 100 && player.score >= 10) {
+        numberText = "1" + player.score;
+        updateScoreDisplay(player, 1);
+      } else if (player.score < 10) {
+        numberText = "10" + player.score;
+        updateScoreDisplay(player, 2);
+      } else {
+        player.display.textContent = player.score;
+      }
     }
-    console.log(`AddScore: ${player.score}`);
   }
+  console.log(`DeductScore: ${player.score}`);
 }
 
 function updateScoreDisplay(player, charCounts) {
-  // WorkAround: Wrapping the first 2-char in a <span>
+  // WorkAround: Wrapping the first 1 or 2-char in a <span>
   // to allows for specific styling of the player's score
   firstTwoChars = numberText.substring(0, charCounts);
   coloredText = `<span class="gray">${firstTwoChars}</span>${numberText.substring(
@@ -171,6 +179,16 @@ p1.buttonDeduct.addEventListener("click", () => {
 p2.buttonDeduct.addEventListener("click", () => {
   deductScore(p2, p1);
 });
+
+let buzzerSound = new Audio("resources/basketball-buzzer.wav");
+
+btn_buzzer.addEventListener("click", () => {
+  soundBuzzer();
+});
+
+function soundBuzzer() {
+  buzzerSound.play();
+}
 // End of Home and Guest Team Score Elements =========
 
 // Load from the Start ===================================
@@ -182,4 +200,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
   p1.display.innerHTML = coloredText;
   p2.display.innerHTML = coloredText;
+  //
+  btn_minsToAdd.disabled = true;
+  btn_minsToDeduct.disabled = true;
+  btn_secsToAdd.disabled = true;
+  btn_secsToDeduct.disabled = true;
 });
